@@ -1,3 +1,12 @@
+if(BUILD_TESTING AND MOORETHREADS_SUPPORT)
+  add_executable(moorethreadsTests moorethreadsTests.c)
+  target_include_directories(moorethreadsTests PRIVATE ${PROJECT_SOURCE_DIR}/include)
+  target_link_libraries(moorethreadsTests PRIVATE ${CMAKE_DL_LIBS})
+  # Tests use assert even when nvtop is built in Release mode.
+  target_compile_options(moorethreadsTests PRIVATE -UNDEBUG)
+  add_test(NAME moorethreadsTelemetry COMMAND moorethreadsTests)
+endif()
+
 find_package(GTest)
 if (BUILD_TESTING AND GTest_FOUND)
 

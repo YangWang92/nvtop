@@ -174,6 +174,10 @@ if(ROCKCHIP_SUPPORT)
   target_sources(nvtop PRIVATE extract_npuinfo_rockchip.c)
 endif()
 
+if(MOORETHREADS_SUPPORT)
+  target_sources(nvtop PRIVATE extract_gpuinfo_moorethreads.c)
+endif()
+
 if(METAX_SUPPORT)
   target_sources(nvtop PRIVATE extract_gpuinfo_metax.c)
 endif()

@@ -135,6 +135,13 @@ else()
   set(TENSTORRENT_SUPPORT_DEFAULT OFF)
 endif()
 
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  set(MOORETHREADS_SUPPORT_DEFAULT ON)
+else()
+  set(MOORETHREADS_SUPPORT_DEFAULT OFF)
+endif()
+option(MOORETHREADS_SUPPORT "Build support for Moore Threads GPUs through libmtml" ${MOORETHREADS_SUPPORT_DEFAULT})
+
 option(NVIDIA_SUPPORT "Build support for NVIDIA GPUs through libnvml" ${NVIDIA_SUPPORT_DEFAULT})
 option(AMDGPU_SUPPORT "Build support for AMD GPUs through amdgpu driver" ${AMDGPU_SUPPORT_DEFAULT})
 option(RADEON_SUPPORT "Build support for ATI/AMD GPUs through radeon driver" ${RADEON_SUPPORT_DEFAULT})
